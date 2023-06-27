@@ -16,16 +16,14 @@ class Article extends Model
         'slug',
         'title',
         'content',
-        'history',
-        'meta',
+        'metadata',
     ];
 
     /**
      * The attributes that should be cast.
      */
     protected $casts = [
-        'history' => 'array',
-        'meta' => 'array',
+        'metadata' => 'array',
     ];
 
     /**
@@ -36,18 +34,10 @@ class Article extends Model
     }
 
     /**
-     * Get the article's history.
-     */
-    public function getHistory(): array
-    {
-        return $this->history ?? [];
-    }
-    
-    /**
      * Get the article's metadata.
      */
-    public function getMeta(): array
+    public function getMetadata(): array
     {
-        return $this->meta ?? [];
+        return $this->metadata ?? [];
     }
 }
