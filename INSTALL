@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+// Create .env if needed
+if (! file_exists(__DIR__.'/.env')) {
+    copy(__DIR__.'/.env.production.example', __DIR__.'/.env');
+}
+
+// Run Composer install if needed
+if (! file_exists(__DIR__.'/vendor/autoload.php')) {
+    passthru('composer install', $composerResultCode);
+
+    // If something failed, we stop
+    if (! $composerResultCode) {
+        exit($composerResultCode);
+    }
+}
+
+// Now we can run the Artisan install command
+passthru('php artisan app:install --ansi', $artisanResultCode);
+exit($artisanResultCode);
