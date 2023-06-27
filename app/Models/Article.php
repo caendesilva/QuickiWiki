@@ -40,4 +40,12 @@ class Article extends Model
     {
         return $this->metadata ?? [];
     }
+
+    /**
+     * Get the article's contributions.
+     */
+    public function contributions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Contribution::class);
+    }
 }

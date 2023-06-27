@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the user's contributions.
+     */
+    public function contributions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Contribution::class);
+    }
 }
