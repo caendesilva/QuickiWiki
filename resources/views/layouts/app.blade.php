@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 flex flex-col relative">
+        <div class="min-h-screen bg-gray-100 flex flex-col relative pb-8">
             <nav id="navbar" class="absolute h-8 left-64 w-[calc(100vw_-_16rem)]">
                 @include('layouts.navigation')
             </nav>
@@ -24,7 +24,7 @@
             </aside>
 
             <!-- Page Content -->
-            <main id="main" class="absolute top-8 left-64 w-[calc(100vw_-_16rem)] min-h-[calc(100vh_-_2rem)]">
+            <main id="main" class="relative top-8 left-64 w-[calc(100vw_-_16rem)] min-h-[calc(100vh_-_2rem)]">
                 {{ $slot }}
             </main>
         </div>
