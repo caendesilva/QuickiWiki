@@ -10,7 +10,7 @@
         </header>
 
         <!-- Navigation Links -->
-        <nav class="h-full">
+        <nav class="h-full py-2">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
