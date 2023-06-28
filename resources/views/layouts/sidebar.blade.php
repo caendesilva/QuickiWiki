@@ -3,7 +3,7 @@
     <div class="flex justify-between flex-col h-full">
         <!-- Logo -->
         <header class="flex items-center border-b p-2 min-h-[4rem]">
-            <a href="{{ route('dashboard') }}" class="flex items-center">
+            <a href="{{ route('home') }}" class="flex items-center">
                 <x-application-logo class="block h-9 w-auto fill-current text-gray-800 px-2" />
                 <strong class="text-lg">{{ config('app.name', 'Laravel') }}</strong>
             </a>
@@ -11,8 +11,8 @@
 
         <!-- Navigation Links -->
         <nav class="h-full py-2">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                {{ __('Home') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
