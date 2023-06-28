@@ -13,7 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return $this->show(Article::where('slug', 'index')->firstOrFail());
     }
 
     /**
@@ -37,7 +37,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('layouts.article', [
+            'title' => $article->title,
+            'content' => $article->content,
+        ]);
     }
 
     /**
