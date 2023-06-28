@@ -5,4 +5,6 @@
 final class WikiSettings {
     const WIKI_NAME = 'QuickiWiki';
     const WIKI_DESCRIPTION = 'A quick and easy wiki for your needs!';
+
+    const STICKY_SIDEBAR = true;
 }
