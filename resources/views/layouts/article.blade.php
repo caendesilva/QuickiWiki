@@ -9,7 +9,9 @@
                         </h2>
                     </header>
                     <hr class="my-3">
-                    {{ $content }}
+                    <div>
+                        {{ $content }}
+                    </div>
                 </article>
             </div>
         </div>
