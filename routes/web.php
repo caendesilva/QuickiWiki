@@ -23,9 +23,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('', \App\Http\Controllers\ArticleController::class);
-Route::get('/', function () {
-    if (app('installed')) {
-        return app(\App\Http\Controllers\ArticleController::class)->index();
+Route::get('/', function (\Illuminate\Foundation\Application $app) {
+    if ($app->make('installed')) {
+        return $app->call(\App\Http\Controllers\ArticleController::class, [], 'index');
     }
     return view('welcome');
 })->name('home');
