@@ -8,6 +8,7 @@
                             {{ $title }}
                         </h2>
                     </header>
+                    <hr class="my-3">
                     {{ $content }}
                 </article>
             </div>
