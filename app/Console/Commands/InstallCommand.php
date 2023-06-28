@@ -78,6 +78,8 @@ class InstallCommand extends Command
                 'name' => $adminName,
                 'email' => $adminEmail,
                 'password' => $adminPassword,
+                'email_verified_at' => now(),
+                // TODO: Add role
             ]);
 
             $this->info('Creating default pages...');
