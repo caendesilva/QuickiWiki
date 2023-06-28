@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use Database\Seeders\SiteSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -78,6 +79,9 @@ class InstallCommand extends Command
                 'email' => $adminEmail,
                 'password' => $adminPassword,
             ]);
+
+            $this->info('Creating default pages...');
+            app(SiteSeeder::class)->run($user);
 
             $this->info('All done! Go build something amazing!');
         });
