@@ -19,7 +19,7 @@
             <nav id="navbar" class="absolute w-full h-16 sm:h-8 sm:left-64 sm:w-[calc(100vw_-_16rem)]">
                 @include('layouts.navigation')
             </nav>
-            <aside id="sidebar" @class(["fixed z-10 w-64 h-screen hidden sm:block", WikiSettings::STICKY_SIDEBAR ? 'sm:fixed' : 'sm:absolute']) :class="{'block': sidebarOpen, 'hidden': ! sidebarOpen}">
+            <aside id="sidebar" @class(["fixed z-10 w-64 h-screen hidden sm:block", WikiSettings::$StickySidebar ? 'sm:fixed' : 'sm:absolute']) :class="{'block': sidebarOpen, 'hidden': ! sidebarOpen}">
                 @include('layouts.sidebar')
             </aside>
 
