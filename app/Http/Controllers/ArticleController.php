@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ShortcodeProcessor;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
@@ -38,8 +39,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return view('layouts.article', [
-            'title' => $article->title,
-            'content' => $article->content,
+            'title' => (new ShortcodeProcessor($article->title))->process(),
+            'content' => (new ShortcodeProcessor($article->content))->process(),
         ]);
     }
 

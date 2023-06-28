@@ -17,7 +17,7 @@ class SiteSeeder extends Seeder
     {
         $index = Article::create([
             'slug' => 'index',
-            'title' => 'Welcome to the [[ SiteName ]] Wiki!',
+            'title' => 'Welcome to the [[ WikiName ]] Wiki!',
             'content' => 'Welcome to QuickiWiki! This is the default homepage. You can edit it by clicking the "Edit" button.',
         ]);
 
