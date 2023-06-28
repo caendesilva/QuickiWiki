@@ -15,20 +15,16 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+        <div class="min-h-screen bg-gray-100 flex flex-col relative">
+            <nav id="navbar" class="absolute h-8 left-64 w-[calc(100vw_-_16rem)]">
+                @include('layouts.navigation')
+            </nav>
+            <aside id="sidebar" class="absolute w-64 h-screen">
+                @include('layouts.sidebar')
+            </aside>
 
             <!-- Page Content -->
-            <main>
+            <main id="main" class="absolute top-8 left-64 w-[calc(100vw_-_16rem)] min-h-[calc(100vh_-_2rem)]">
                 {{ $slot }}
             </main>
         </div>
