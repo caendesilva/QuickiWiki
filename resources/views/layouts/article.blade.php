@@ -1,5 +1,11 @@
 <x-app-layout>
-    <article>
-        {{ $content }}
-    </article>
+    <div class="py-12 sm:py-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <article class="p-6 text-gray-900">
+                    {{ $content }}
+                </article>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
