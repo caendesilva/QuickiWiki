@@ -15,16 +15,16 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 flex flex-col relative pb-8">
-            <nav id="navbar" class="absolute h-8 left-64 w-[calc(100vw_-_16rem)]">
+        <div class="min-h-screen bg-gray-100 flex flex-col relative pb-8" x-data="{ sidebarOpen: false }">
+            <nav id="navbar" class="absolute w-full h-16 sm:h-8 sm:left-64 sm:w-[calc(100vw_-_16rem)]">
                 @include('layouts.navigation')
             </nav>
-            <aside id="sidebar" class="absolute w-64 h-screen">
+            <aside id="sidebar" class="fixed z-10 sm:absolute w-64 h-screen hidden sm:block" :class="{'block': sidebarOpen, 'hidden': ! sidebarOpen}">
                 @include('layouts.sidebar')
             </aside>
 
             <!-- Page Content -->
-            <main id="main" class="relative top-8 left-64 w-[calc(100vw_-_16rem)] min-h-[calc(100vh_-_2rem)]">
+            <main id="main" class="relative top-8 px-4 sm:px-0 sm:left-64 sm:w-[calc(100vw_-_16rem)] min-h-[calc(100vh_-_2rem)]">
                 {{ $slot }}
             </main>
         </div>
