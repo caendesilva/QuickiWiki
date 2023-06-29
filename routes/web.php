@@ -22,7 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::resource('', \App\Http\Controllers\ArticleController::class);
 Route::get('/', function (\Illuminate\Foundation\Application $app) {
     if ($app->make('installed')) {
