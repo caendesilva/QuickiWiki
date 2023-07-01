@@ -11,15 +11,13 @@
 
         <!-- Navigation Links -->
         <nav class="h-full py-2">
-            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Home') }}
-            </x-responsive-nav-link>
-
-            @auth
-            <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                {{ __('Profile') }}
-            </x-responsive-nav-link>
-            @endauth
+            @foreach(WikiSettings::navigationItems() as $label => $route)
+                @if($route !== false)
+                    <x-responsive-nav-link :href="route($route)" :active="request()->routeIs($route)">
+                        {{ __($label) }}
+                    </x-responsive-nav-link>
+                @endif
+            @endforeach
         </nav>
 
         <!-- Footer -->
