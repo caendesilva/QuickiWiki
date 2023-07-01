@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('', \App\Http\Controllers\ArticleController::class);
+Route::resource('', \App\Http\Controllers\ArticleController::class)->names('article');
 Route::get('/', function (\Illuminate\Foundation\Application $app) {
     if ($app->make('installed')) {
         return $app->call(\App\Http\Controllers\ArticleController::class, [], 'index');
