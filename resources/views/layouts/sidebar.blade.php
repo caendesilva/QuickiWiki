@@ -15,9 +15,11 @@
                 {{ __('Home') }}
             </x-responsive-nav-link>
 
+            @auth
             <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 {{ __('Profile') }}
             </x-responsive-nav-link>
+            @endauth
         </nav>
 
         <!-- Footer -->
