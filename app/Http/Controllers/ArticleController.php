@@ -41,6 +41,7 @@ class ArticleController extends Controller
         return view('layouts.article', [
             'title' => (new ShortcodeProcessor($article->title))->process(),
             'content' => (new ShortcodeProcessor($article->content))->process(),
+            'article' => $article,
         ]);
     }
 
