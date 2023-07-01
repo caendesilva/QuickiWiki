@@ -9,7 +9,7 @@
                         </h2>
                         
                         <div class="text-sm text-gray-500">
-                            <a href="{{ route('article.edit', $article) }}">
+                            <a href="{{ route('articles.edit', $article) }}">
                                 {{ __('Edit') }}
                             </a>
                         </div>

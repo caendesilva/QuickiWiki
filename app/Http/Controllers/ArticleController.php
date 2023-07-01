@@ -14,7 +14,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return $this->show(Article::where('slug', 'index')->firstOrFail());
+        $index = Article::where('slug', 'index')->first();
+
+        if ($index) {
+            return $this->show($index);
+        }
+
+        return view('welcome');
     }
 
     /**
