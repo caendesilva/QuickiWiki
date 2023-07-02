@@ -18,16 +18,16 @@
                     <form method="POST" action="{{ route('articles.update', $article) }}">
                         @method('PUT')
                         @csrf
-                        <label for="title" class="block font-medium text-sm text-gray-700">Title</label>
-                        <input type="text" name="title" id="title" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ $article->title }}" />
+                        <x-input-label for="title">Title</x-input-label>
+                        <x-text-input type="text" name="title" id="title" class="form-input mt-1 mb-3 block w-full" value="{{ $article->title }}" />
 
-                        <label for="content" class="block font-medium text-sm text-gray-700 mt-3">Content</label>
-                        <textarea name="content" id="content" class="form-textarea rounded-md shadow-sm mt-1 block w-full" rows="10">{{ $article->content }}</textarea>
+                        <x-input-label for="content">Content</x-input-label>
+                        <x-textarea-input name="content" id="content" class="form-textarea mt-1 mb-3 block w-full" rows="10">{{ $article->content }}</x-textarea-input>
 
                         <div class="mt-4">
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
+                            <x-primary-button type="submit">
                                 {{ __('Save') }}
-                            </button>
+                            </x-primary-button>
                         </div>
                     </form>
                 </section>
