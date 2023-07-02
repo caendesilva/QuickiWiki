@@ -25,6 +25,9 @@
                         <x-textarea-input name="content" id="content" class="form-textarea mt-1 mb-3 block w-full" rows="10">{{ $article->content }}</x-textarea-input>
 
                         <div class="mt-4">
+                            <x-secondary-button href="{{ route('articles.show', $article) }}" class="mr-1">
+                                {{ __('Cancel') }}
+                            </x-secondary-button>
                             <x-primary-button type="submit">
                                 {{ __('Save') }}
                             </x-primary-button>
