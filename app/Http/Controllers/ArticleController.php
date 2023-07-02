@@ -64,7 +64,12 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $this->authorize('update', $article);
+
+        return view('article.edit', [
+            'title' => (new ShortcodeProcessor($article->title))->process(),
+            'article' => $article,
+        ]);
     }
 
     /**
