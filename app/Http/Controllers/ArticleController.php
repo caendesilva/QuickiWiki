@@ -6,6 +6,7 @@ use App\Actions\ShortcodeProcessor;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use App\Models\Contribution;
 
 class ArticleController extends Controller
 {
@@ -77,7 +78,12 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        $this->authorize('update', $article);
+
+        $article->update($request->validated());
+        Contribution::log($article, $request->user(), 'Updated the article.', Contribution::diff($article->getOriginal('content'), $article->content));
+
+        return redirect()->route('articles.show', $article);
     }
 
     /**
