@@ -44,7 +44,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('layouts.article', [
+        return view('article.show', [
             'title' => (new ShortcodeProcessor($article->title))->process(),
             'content' => (new ShortcodeProcessor($article->content))->process(),
             'article' => $article,
