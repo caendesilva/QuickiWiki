@@ -13,6 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{ \App\Plugins\SimpleToast\Toast::listen() }}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 flex flex-col relative pb-8" x-data="{ sidebarOpen: false }">
