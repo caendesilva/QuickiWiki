@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Plugins\QuickDiff;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,21 +50,12 @@ class Contribution extends Model
     }
 
     /**
-     * Calculate the diff between two strings.
+     * Calculate the diff between the revision and the one before it.
      */
-    public static function diff(string $old, string $new): string
+    public function diff(): string
     {
-        $old = explode("\n", $old);
-        $new = explode("\n", $new);
+        $old = $this->article->contributions()->where('id', '<', $this->id)->latest()->first();
 
-        $diff = array_map(function ($old, $new) {
-            if ($old === $new) {
-                return $old;
-            }
-
-            return sprintf('<del>%s</del><ins>%s</ins>', $old, $new);
-        }, $old, $new);
-
-        return implode("\n", $diff);
+        return QuickDiff::calculate($this->content, $old ? $old->content : null);
     }
 }
