@@ -17,20 +17,12 @@ class QuickDiff
             return 'No changes made.';
         }
 
-        $oldBytes = mb_strlen($old);
-        $newBytes = mb_strlen($new);
+        [$oldBytes, $newBytes] = [strlen($old), strlen($new)];
 
-        if ($oldBytes > $newBytes) {
-            return 'Added ' . static::calculateDiff($old, $new) . ' bytes.';
-        } else if ($newBytes > $oldBytes) {
-            return 'Removed ' . static::calculateDiff($old, $new) . ' bytes.';
-        } else {
-            return 'Changed ' . static::calculateDiff($old, $new) . ' bytes.';
-        }
-    }
-
-    private static function calculateDiff(string $old, string $new):int
-    {
-        return abs(strlen($old) - strlen($new));
+        return sprintf("%s %s bytes.", match (true) {
+            $oldBytes > $newBytes => 'Added',
+            $newBytes > $oldBytes => 'Removed',
+            default => 'Changed',
+        }, abs($oldBytes - $newBytes));
     }
 }
