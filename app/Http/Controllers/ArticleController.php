@@ -89,7 +89,7 @@ class ArticleController extends Controller
             return redirect(route('articles.show', $article), 303);
         }
 
-        Contribution::log($article, $request->user(), 'Updated the article.', Contribution::diff($article->getOriginal('content'), $article->content));
+        Contribution::log($article, $request->user(), $article->content, 'Updated the article.');
         Toast::flash('Article updated!', 'success');
 
         return redirect()->route('articles.show', $article);
