@@ -31,13 +31,6 @@ class QuickDiff
 
     private static function calculateDiff(string $old, string $new):int
     {
-        $oldBytes = mb_strlen($old);
-        $newBytes = mb_strlen($new);
-
-        if ($oldBytes > $newBytes) {
-            return $oldBytes - $newBytes;
-        }
-
-        return $newBytes - $oldBytes;
+        return abs(strlen($old) - strlen($new));
     }
 }
