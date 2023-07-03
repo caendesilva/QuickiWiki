@@ -104,4 +104,16 @@ class ArticleController extends Controller
 
         $article->delete();
     }
+
+    /**
+     * Display the contribution history of the specified resource.
+     */
+    public function contributions(Article $article)
+    {
+        return view('article.contributions', [
+            'title' => (new ShortcodeProcessor($article->title))->process(),
+            'article' => $article,
+            'contributions' => $article->contributions()->with('user')->latest()->paginate(10),
+        ]);
+    }
 }

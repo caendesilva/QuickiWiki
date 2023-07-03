@@ -24,6 +24,10 @@
                                 </x-slot:trigger>
 
                                <x-slot:content>
+                                   <x-dropdown-link href="{{ route('articles.contributions', $article) }}">
+                                       {{ __('Contributions') }}
+                                      </x-dropdown-link>
+
                                    <x-dropdown-link href="{{ route('articles.destroy', $article) }}" onclick="event.preventDefault(); document.getElementById('delete-article-form').submit();">
                                        {{ __('Delete') }}
                                    </x-dropdown-link>
