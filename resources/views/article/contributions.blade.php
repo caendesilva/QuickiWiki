@@ -29,7 +29,7 @@
                                 @foreach ($article->contributions as $contribution)
                                     <tr>
                                         <td class="border px-4 py-2">{{ $contribution->user->name }}</td>
-                                        <td class="border px-4 py-2">{{ $contribution->created_at->format('d/m/Y H:i') }}</td>
+                                        <td class="border px-4 py-2"><time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time></td>
                                         <td class="border px-4 py-2">{{ $contribution->message }}</td>
                                         <td class="border px-4 py-2">{{ $contribution->diff() }}</td>
                                     </tr>
