@@ -4,6 +4,8 @@ namespace App\Plugins;
 
 /**
  * Simple diffing for strings.
+ *
+ * @experimental
  */
 class QuickDiff
 {
