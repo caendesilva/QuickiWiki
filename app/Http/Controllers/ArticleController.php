@@ -81,13 +81,14 @@ class ArticleController extends Controller
     {
         $this->authorize('update', $article);
 
+        $article->update($request->validated());
+
         // Check if any changes were made
-        if ($article->content === $request->content && $article->title === $request->title) {
+        if (! $article->wasChanged()) {
             Toast::flash('Nothing new to change!');
             return redirect(route('articles.show', $article), 303);
         }
 
-        $article->update($request->validated());
         Contribution::log($article, $request->user(), 'Updated the article.', Contribution::diff($article->getOriginal('content'), $article->content));
         Toast::flash('Article updated!', 'success');
 
