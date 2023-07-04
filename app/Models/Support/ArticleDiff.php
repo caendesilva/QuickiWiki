@@ -41,7 +41,7 @@ class ArticleDiff implements Htmlable
             self::STATE_UNCHANGED => 'gray',
             self::STATE_CHANGED => 'darkblue',
             self::STATE_SUBTRACTED => 'red',
-        }, $this->getMessage()));
+        }, e($this->getMessage())));
     }
 
     public function getMessage(): string
