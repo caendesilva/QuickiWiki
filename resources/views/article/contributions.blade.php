@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($article->contributions as $contribution)
+                                @foreach ($contributions as $contribution)
                                     <tr>
                                         <td class="border px-4 py-2"><x-link href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</x-link></td>
                                         <td class="border px-4 py-2"><time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time></td>
