@@ -36,7 +36,13 @@ class ArticleDiff implements Htmlable
 
     public function toHtml(): HtmlString
     {
-        return new HtmlString($this->getMessage());
+        return new HtmlString(sprintf('<span style="color: %s">%s</span>', match ($this->state) {
+            self::STATE_CREATED => 'green',
+            self::STATE_UNCHANGED => 'gray',
+            self::STATE_CHANGED => 'darkblue',
+            self::STATE_ADDED => 'green',
+            self::STATE_SUBTRACTED => 'red',
+        }, $this->getMessage()));
     }
 
     public function getMessage(): string
