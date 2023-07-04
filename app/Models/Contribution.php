@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Plugins\QuickDiff;
+use App\Models\Support\ArticleDiff;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -52,10 +52,10 @@ class Contribution extends Model
     /**
      * Calculate the diff between the revision and the one before it.
      */
-    public function diff(): string
+    public function diff(): ArticleDiff
     {
         $old = $this->article->contributions()->where('id', '<', $this->id)->latest()->first();
 
-        return QuickDiff::calculate($this->content, $old ? $old->content : null);
+        return new ArticleDiff($this->content, $old ? $old->content : null);
     }
 }
