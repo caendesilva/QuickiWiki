@@ -34,6 +34,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        @if ($contributions->hasPages())
+                            <footer class="mt-3">
+                                {{ $contributions->links() }}
+                            </footer>
+                        @endif
                     </div>
                 </section>
             </div>
