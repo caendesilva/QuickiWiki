@@ -15,7 +15,7 @@
                         </div>
                     </header>
                     <hr class="my-3">
-                    <div>
+                    <div class="prose">
                         <table class="w-full">
                             <thead>
                                 <tr>
@@ -27,7 +27,7 @@
                             <tbody>
                                 @foreach ($contributions as $contribution)
                                     <tr>
-                                        <td class="border px-4 py-2"><x-link href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</x-link></td>
+                                        <td class="border px-4 py-2"><a href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</a></td>
                                         <td class="border px-4 py-2"><time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time></td>
                                         <td class="border px-4 py-2">{{ $contribution->message }} <small>({{ $contribution->diff() }})</small></td>
                                     </tr>
