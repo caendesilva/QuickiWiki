@@ -33,6 +33,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                        </table>
                     </div>
                 </section>
             </div>
