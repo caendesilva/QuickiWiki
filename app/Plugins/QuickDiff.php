@@ -30,10 +30,6 @@ class QuickDiff
 
     public static function calculateDelta(int $oldBytes, int $newBytes): int
     {
-        return match (true) {
-            $oldBytes > $newBytes => -1,
-            $newBytes > $oldBytes => 1,
-            default => 0,
-        };
+        return $newBytes <=> $oldBytes;
     }
 }
