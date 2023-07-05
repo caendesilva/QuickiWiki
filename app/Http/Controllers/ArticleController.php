@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Contribution;
 use App\Plugins\SimpleToast\Toast;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -56,7 +58,7 @@ class ArticleController extends Controller
     {
         return view('article.show', [
             'title' => (new ShortcodeProcessor($article->title))->process(),
-            'content' => (new ShortcodeProcessor($article->content))->process(),
+            'content' => new HtmlString(Str::markdown((new ShortcodeProcessor($article->content))->process())),
             'article' => $article,
         ]);
     }

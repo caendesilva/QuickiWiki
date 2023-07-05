@@ -41,7 +41,7 @@
                         </div>
                     </header>
                     <hr class="my-3">
-                    <div>
+                    <div class="prose">
                         {{ $content }}
                     </div>
                 </article>
