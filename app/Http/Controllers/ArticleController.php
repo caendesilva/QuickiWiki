@@ -85,7 +85,6 @@ class ArticleController extends Controller
 
         $article->update($request->validated());
 
-        // Check if any changes were made
         if (! $article->wasChanged()) {
             Toast::flash('Nothing new to change!');
             return redirect(route('articles.show', $article), 303);
