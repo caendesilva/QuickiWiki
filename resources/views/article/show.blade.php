@@ -41,7 +41,7 @@
                         </div>
                     </header>
                     <hr class="my-3">
-                    <div class="prose">
+                    <div class="prose max-w-full">
                         {{ $content }}
                     </div>
                 </article>
