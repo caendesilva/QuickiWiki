@@ -22,7 +22,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Install the application';
 
     /**
      * Execute the console command.
