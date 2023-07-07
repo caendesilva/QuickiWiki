@@ -20,7 +20,7 @@ class ShortcodeProcessor
 
     protected function processShortcodes(string $string): string
     {
-        $string = str_replace('[[ WikiName ]]', \WikiSettings::$WikiName, $string);
+        $string = str_replace('[[ WikiName ]]', \WikiSettings::$wikiName, $string);
 
         return $string;
     }

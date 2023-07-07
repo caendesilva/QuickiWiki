@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', WikiSettings::$WikiName),
+    'name' => env('APP_NAME', WikiSettings::$wikiName),
 
     /*
     |--------------------------------------------------------------------------
