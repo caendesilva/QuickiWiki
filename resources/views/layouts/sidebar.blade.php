@@ -22,7 +22,7 @@
 
         <!-- Footer -->
         <footer class="flex items-center border-t p-2 min-h-[4rem] text-sm text-center justify-center">
-            Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+            {{ WikiSettings::footerText() }}
         </footer>
     </div>
 </div>

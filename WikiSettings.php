@@ -17,4 +17,10 @@ final class WikiSettings {
             'Profile' => \Illuminate\Support\Facades\Auth::check() ? 'profile.edit' : false,
         ];
     }
+
+    // The text for the sidebar footer.
+    public static function footerText(): string
+    {
+        return 'QuickiWiki v'.\App\QuickiWiki::VERSION;
+    }
 }
