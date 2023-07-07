@@ -25,3 +25,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('home');
 Route::resource('articles', \App\Http\Controllers\ArticleController::class);
 Route::get('/articles/{article}/contributions', [\App\Http\Controllers\ArticleController::class, 'contributions'])->name('articles.contributions');
+
+Route::resource('users', \App\Http\Controllers\UserController::class)->only('show');
