@@ -28,11 +28,15 @@ class ArticleController extends Controller
     {
         $index = Article::where('slug', 'index')->first();
 
-        if ($index) {
-            return $this->show($index);
+        if (! $index) {
+            if (! app('installed')) {
+                return view('welcome');
+            } else {
+                return 'Error: No index article found. Did you properly install the application?';
+            }
         }
 
-        return view('welcome');
+        return $this->show($index);
     }
 
     /**
