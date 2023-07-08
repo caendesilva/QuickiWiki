@@ -46,6 +46,6 @@ class WikiSettings {
      */
     public static function footerText(): string
     {
-        return '[QuickiWiki](https://quickiwiki.desilva.se) v'. QuickiWiki::VERSION;
+        return '[QuickiWiki](https://quickiwiki.desilva.se) &nbsp;v'. QuickiWiki::VERSION;
     }
 }
