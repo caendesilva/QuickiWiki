@@ -3,6 +3,7 @@
 use App\QuickiWiki;
 use App\Plugins\QuickNav\NavItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /**
  * This file contains the settings for your Wiki. Please edit as you see fit!
@@ -15,6 +16,17 @@ class WikiSettings {
      * Should the sidebar stay fixed when scrolling?
      */
     public static bool $stickySidebar = true;
+
+    /**
+     * The navigation items for the top navigation bar.
+     */
+    public static function navigationItems(): array
+    {
+        return [
+            NavItem::make('Log in', 'login')->visible(! Auth::check()),
+            NavItem::make('Register', 'register')->visible(! Auth::check() && Route::has('register')),
+        ];
+    }
 
     /**
      * The navigation items for the sidebar.

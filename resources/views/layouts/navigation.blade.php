@@ -14,6 +14,13 @@
 
         <!-- Settings Dropdown -->
         <div class="flex items-center ml-6">
+            <div class="px-4 md:mx-2">
+                @foreach(\App\QuickiWiki::navigationMenu() as $navItem)
+                    <x-nav-link :href="$navItem" :active="$navItem->isActive()">
+                        {{ __($navItem->label()) }}
+                    </x-nav-link>
+                @endforeach
+            </div>
             @auth
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
@@ -45,14 +52,6 @@
                     </form>
                 </x-slot>
             </x-dropdown>
-            @else
-                <div class="px-4 md:mx-2">
-                    <x-nav-link href="{{ route('login') }}">Log in</x-nav-link>
-
-                    @if (Route::has('register'))
-                        <x-nav-link href="{{ route('register') }}">Register</x-nav-link>
-                    @endif
-                </div>
             @endauth
         </div>
     </div>
