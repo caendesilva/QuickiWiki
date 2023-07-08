@@ -15,7 +15,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:install';
+    protected $signature = 'app:install {--force : Force the installation to run even if the app is already installed }';
 
     /**
      * The console command description.
@@ -43,8 +43,28 @@ class InstallCommand extends Command
             }
 
             if ($this->isAlreadyInstalled()) {
-                $this->error('App is already installed!');
-                return Command::FAILURE;
+                if ($this->option('force')) {
+                    if (app()->environment('production')) {
+                        $this->warn('<error>DANGER:</> You are running this command in production mode! Proceeding with the command will wipe the database!');
+                        if (! $this->confirm('Are you sure you want to wipe the database and continue?')) {
+                            $this->comment('Aborting...');
+                            return Command::FAILURE;
+                        }
+                    } else {
+                        $this->warn('App is already installed, but --force was passed. The installation will proceed after wiping the database.');
+                    }
+                    $this->info('Wiping database...');
+                    $wipeExit = $this->call('db:wipe');
+                    if ($wipeExit !== Command::SUCCESS) {
+                        $this->error('Failed to wipe database!');
+                        return Command::FAILURE;
+                    } else {
+                        $this->info('Database wiped successfully! Continuing with installation...');
+                    }
+                } else {
+                    $this->error('App is already installed!');
+                    return Command::FAILURE;
+                }
             }
 
             $adminName = $this->ask('Enter Admin user name', 'admin');
