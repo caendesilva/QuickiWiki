@@ -13,7 +13,7 @@
         <nav class="h-full py-2">
             @foreach(\App\QuickiWiki::sidebarMenu() as $navItem)
                 <x-responsive-nav-link :href="$navItem" :active="$navItem->isActive()">
-                    {{ __($navItem->label) }}
+                    {{ __($navItem->label()) }}
                 </x-responsive-nav-link>
             @endforeach
         </nav>

@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 class NavItem implements \Stringable
 {
-    public readonly string $label;
-    public readonly string $destination;
-    public int $priority = 0;
-    public bool|\Closure $visible = true;
+    protected string $label;
+    protected string $destination;
+    protected int $priority = 0;
+    protected bool|\Closure $visible = true;
 
     public static function make(string $label, string $destination, int $priority = 0): static
     {
@@ -37,6 +37,21 @@ class NavItem implements \Stringable
 
         // If route does not exist, return destination, assuming it is already a URL
         return $this->destination;
+    }
+
+    public function label(): string
+    {
+        return $this->label;
+    }
+
+    public function destination(): string
+    {
+        return $this->destination;
+    }
+
+    public function priority(): int
+    {
+        return $this->priority;
     }
 
     public function isActive(): bool
