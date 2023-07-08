@@ -48,7 +48,7 @@ class InstallCommand extends Command
             }
 
             $adminName = $this->ask('Enter Admin user name', 'admin');
-            $adminEmail = $this->ask('Enter Admin user email', 'admin@localhost');
+            $adminEmail = $this->ask('Enter Admin user email', 'admin@'.parse_url(config('app.url'))['host']);
             $adminPassword = $this->secret('Enter Admin user password');
 
             if ($isInteractive && ! $adminPassword) {
