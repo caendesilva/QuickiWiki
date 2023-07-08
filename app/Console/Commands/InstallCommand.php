@@ -98,7 +98,7 @@ class InstallCommand extends Command
             }
 
             $this->info('Creating admin user...');
-            $user = User::create([
+            User::create([
                 'name' => $adminName,
                 'email' => $adminEmail,
                 'password' => $adminPassword,
@@ -107,7 +107,7 @@ class InstallCommand extends Command
             ]);
 
             $this->info('Creating default pages...');
-            app(SiteSeeder::class)->run($user);
+            app(SiteSeeder::class)->run();
 
             $this->info('All done! Go build something amazing!');
         });
