@@ -12,8 +12,6 @@ class QuickiWiki
     /** @return array<\App\Plugins\QuickNav\NavItem> */
     public static function sidebarMenu(): array
     {
-        return collect(\WikiSettings::navigationItems())
-            ->filter(fn ($item) => $item->isVisible())
-            ->sortBy('priority')->toArray();
+        return \App\Plugins\QuickNav\NavigationMenu::make(\WikiSettings::navigationItems())->getItems();
     }
 }
