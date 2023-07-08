@@ -47,10 +47,10 @@
             </x-dropdown>
             @else
                 <div class="px-4 md:mx-2">
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-2 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Log in</a>
+                    <x-nav-link href="{{ route('login') }}">Log in</x-nav-link>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-flex items-center px-2 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Register</a>
+                        <x-nav-link href="{{ route('register') }}">Register</x-nav-link>
                     @endif
                 </div>
             @endauth
