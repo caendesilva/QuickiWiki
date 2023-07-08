@@ -25,7 +25,7 @@ class WikiSettings {
     public static function navigationItems(): array
     {
         return [
-            NavItem::make('Log in', 'login')->visible(! Auth::check()),
+            NavItem::make('Log in', 'login')->guest(),
             NavItem::make('Register', 'register')->visible(! Auth::check() && Route::has('register')),
         ];
     }
@@ -37,7 +37,7 @@ class WikiSettings {
     {
         return [
             NavItem::make('Home', 'home'),
-            NavItem::make('Profile', 'profile.edit')->visible(Auth::check()),
+            NavItem::make('Profile', 'profile.edit')->auth(),
         ];
     }
 

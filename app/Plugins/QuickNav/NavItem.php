@@ -74,4 +74,14 @@ class NavItem implements \Stringable
 
         return $this;
     }
+
+    public function auth(): static
+    {
+        return $this->visible(fn () => auth()->check());
+    }
+
+    public function guest(): static
+    {
+        return $this->visible(fn () => auth()->guest());
+    }
 }
