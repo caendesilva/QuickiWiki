@@ -2,18 +2,27 @@
 
 namespace Database\Seeders;
 
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Article;
 use App\Models\Contribution;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SiteSeeder extends Seeder
+class ProductionSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database with production data.
+     *
+     * This method is called when running the installation command.
      */
     public function run(): void
+    {
+        $this->createIndexPage();
+
+        // You can add more tasks here.
+    }
+
+    protected function createIndexPage(): void
     {
         $index = Article::create([
             'slug' => 'index',

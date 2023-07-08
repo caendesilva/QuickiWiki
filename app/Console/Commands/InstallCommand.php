@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use Database\Seeders\SiteSeeder;
+use Database\Seeders\ProductionSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -107,7 +107,7 @@ class InstallCommand extends Command
             ]);
 
             $this->info('Creating default pages...');
-            app(SiteSeeder::class)->run();
+            app(ProductionSeeder::class)->run();
 
             $this->info('All done! Go build something amazing!');
         });
