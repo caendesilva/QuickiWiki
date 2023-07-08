@@ -41,7 +41,7 @@ class NavItem implements \Stringable
 
     public function isActive(): bool
     {
-        return request()->is($this->destination);
+        return request()->routeIs($this->destination);
     }
 
     public function isVisible(): bool
