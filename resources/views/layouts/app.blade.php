@@ -17,10 +17,10 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 flex flex-col relative pb-8" x-data="{ sidebarOpen: false }">
-            <nav id="navbar" class="absolute w-full h-16 sm:h-8 sm:left-64 sm:w-[calc(100vw_-_16rem)]">
+            <nav id="navbar" class="absolute z-30 w-full h-16 sm:h-8 sm:left-64 sm:w-[calc(100vw_-_16rem)]">
                 @include('layouts.navigation')
             </nav>
-            <aside id="sidebar" @class(["fixed z-10 w-64 h-screen hidden sm:block", WikiSettings::$stickySidebar ? 'sm:fixed' : 'sm:absolute']) :class="{'block': sidebarOpen, 'hidden': ! sidebarOpen}">
+            <aside id="sidebar" @class(["fixed z-20 w-64 h-screen hidden sm:block", WikiSettings::$stickySidebar ? 'sm:fixed' : 'sm:absolute']) :class="{'block': sidebarOpen, 'hidden': ! sidebarOpen}">
                 @include('layouts.sidebar')
             </aside>
 
