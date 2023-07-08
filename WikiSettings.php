@@ -19,6 +19,8 @@ class WikiSettings {
 
     /**
      * The navigation items for the top navigation bar.
+     *
+     * Remember that the items here will be hidden on mobile devices!
      */
     public static function navigationItems(): array
     {

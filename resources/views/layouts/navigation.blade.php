@@ -14,7 +14,7 @@
 
         <!-- Settings Dropdown -->
         <div class="flex items-center ml-6">
-            <div class="px-2">
+            <div class="hidden sm:block px-2">
                 @foreach(\App\QuickiWiki::navigationMenu() as $navItem)
                     <x-nav-link :href="$navItem" :active="$navItem->isActive()">
                         {{ __($navItem->label()) }}
@@ -23,7 +23,7 @@
             </div>
             @auth
             @if(count(\App\QuickiWiki::navigationMenu()))
-                <span role="presentation" class="text-gray-300 select-none">|</span>
+                <span role="presentation" class="hidden sm:block text-gray-300 select-none">|</span>
             @endif
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
