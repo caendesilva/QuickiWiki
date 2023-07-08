@@ -13,14 +13,13 @@ class WikiSettings {
     public static bool $stickySidebar = true;
 
     /**
-     * The navigation items for the sidebar where the key is the label, and the value is the route.
-     * If the value is false, the item will not be shown, this is useful for conditional navigation items.
+     * The navigation items for the sidebar.
      */
     public static function navigationItems(): array
     {
         return [
-            'Home' => 'home',
-            'Profile' => \Illuminate\Support\Facades\Auth::check() ? 'profile.edit' : false,
+            \App\Plugins\QuickNav\NavItem::make('Home', 'home'),
+            \App\Plugins\QuickNav\NavItem::make('Profile', 'profile.edit')->visible(\Illuminate\Support\Facades\Auth::check()),
         ];
     }
 
