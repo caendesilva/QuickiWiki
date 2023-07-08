@@ -39,11 +39,11 @@ class Contribution extends Model
     /**
      * Create a new contribution.
      */
-    public static function log(Article $article, User $user, string $content, string $message): static
+    public static function log(Article $article, ?User $user, string $content, string $message): static
     {
         return static::create([
             'article_id' => $article->id,
-            'user_id' => $user->id,
+            'user_id' => $user?->id,
             'content' => $content,
             'message' => $message,
         ]);
