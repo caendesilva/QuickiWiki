@@ -19,7 +19,7 @@ class WikiSettings {
     /**
      * The navigation items for the sidebar.
      */
-    public static function navigationItems(): array
+    public static function sidebarItems(): array
     {
         return [
             NavItem::make('Home', 'home'),

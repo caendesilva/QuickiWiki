@@ -15,6 +15,6 @@ class QuickiWiki
     /** @return array<\App\Plugins\QuickNav\NavItem> */
     public static function sidebarMenu(): array
     {
-        return NavigationMenu::make(WikiSettings::navigationItems())->getItems();
+        return NavigationMenu::make(WikiSettings::sidebarItems())->getItems();
     }
 }
