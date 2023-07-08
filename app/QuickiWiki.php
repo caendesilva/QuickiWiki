@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Plugins\QuickNav\NavigationMenu;
+use WikiSettings;
+
 /**
  * General facade for QuickiWiki services.
  */
@@ -12,6 +15,6 @@ class QuickiWiki
     /** @return array<\App\Plugins\QuickNav\NavItem> */
     public static function sidebarMenu(): array
     {
-        return \App\Plugins\QuickNav\NavigationMenu::make(\WikiSettings::navigationItems())->getItems();
+        return NavigationMenu::make(WikiSettings::navigationItems())->getItems();
     }
 }

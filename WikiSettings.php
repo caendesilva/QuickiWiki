@@ -1,5 +1,9 @@
 <?php
 
+use App\QuickiWiki;
+use App\Plugins\QuickNav\NavItem;
+use Illuminate\Support\Facades\Auth;
+
 /**
  * This file contains the settings for your Wiki. Please edit as you see fit!
  */
@@ -18,8 +22,8 @@ class WikiSettings {
     public static function navigationItems(): array
     {
         return [
-            \App\Plugins\QuickNav\NavItem::make('Home', 'home'),
-            \App\Plugins\QuickNav\NavItem::make('Profile', 'profile.edit')->visible(\Illuminate\Support\Facades\Auth::check()),
+            NavItem::make('Home', 'home'),
+            NavItem::make('Profile', 'profile.edit')->visible(Auth::check()),
         ];
     }
 
@@ -28,6 +32,6 @@ class WikiSettings {
      */
     public static function footerText(): string
     {
-        return 'QuickiWiki v'.\App\QuickiWiki::VERSION;
+        return 'QuickiWiki v'. QuickiWiki::VERSION;
     }
 }
