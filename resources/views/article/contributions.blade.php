@@ -28,7 +28,11 @@
                                 @foreach ($contributions as $contribution)
                                     <tr>
                                         <td class="border px-4 py-2">
-                                            <a href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</a>
+                                            @if($contribution->user)
+                                                <a href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</a>
+                                            @else
+                                                <i>{{ __('Anonymous') }}</i>
+                                            @endif
                                         </td>
                                         <td class="border px-4 py-2">
                                             <time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time>
