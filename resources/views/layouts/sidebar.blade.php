@@ -11,12 +11,10 @@
 
         <!-- Navigation Links -->
         <nav class="h-full py-2">
-            @foreach(WikiSettings::navigationItems() as $label => $route)
-                @if($route !== false)
-                    <x-responsive-nav-link :href="route($route)" :active="request()->routeIs($route)">
-                        {{ __($label) }}
-                    </x-responsive-nav-link>
-                @endif
+            @foreach(\App\QuickiWiki::sidebarMenu() as $navItem)
+                <x-responsive-nav-link :href="$navItem" :active="$navItem->isActive()">
+                    {{ __($navItem->label) }}
+                </x-responsive-nav-link>
             @endforeach
         </nav>
 
