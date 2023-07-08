@@ -13,22 +13,33 @@ use Illuminate\Support\HtmlString;
 class Toast implements Htmlable
 {
     public string $message;
-    public ToastType $type;
+    public string $type;
+
+    public const TYPES = [
+        'success' => 'bg-green-500',
+        'error' => 'bg-red-500',
+        'info' => 'bg-blue-500',
+        'warning' => 'bg-yellow-500',
+    ];
 
     public static function listen(): ?HtmlString
     {
         return Session::has('toast') ? Session::pull('toast')->toHtml() : null;
     }
 
-    public static function flash(string $message, ToastType|string $type = ToastType::Info): void
+    public static function flash(string $message, string $type = 'info'): void
     {
         Session::flash('toast', new Toast($message, $type));
     }
 
-    public function __construct(string $message, ToastType|string $type = ToastType::Info)
+    public function __construct(string $message, string $type = 'info')
     {
+        if (! array_key_exists($type, static::TYPES)) {
+            throw new \InvalidArgumentException("Invalid toast type: {$type}");
+        }
+
         $this->message = $message;
-        $this->type = $type instanceof ToastType ? $type : ToastType::from($type);
+        $this->type = $type;
     }
 
     public function toHtml(): HtmlString
