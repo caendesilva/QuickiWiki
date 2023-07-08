@@ -3,7 +3,6 @@
 namespace App\Plugins\SimpleToast;
 
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\HtmlString;
 
