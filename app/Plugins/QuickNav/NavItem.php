@@ -4,7 +4,7 @@ namespace App\Plugins\QuickNav;
 
 use Illuminate\Support\Facades\Route;
 
-class NavItem
+class NavItem implements \Stringable
 {
     public readonly string $label;
     public readonly string $destination;
@@ -21,6 +21,11 @@ class NavItem
         $this->label = $label;
         $this->destination = $destination;
         $this->priority = $priority;
+    }
+
+    public function __toString(): string
+    {
+        return $this->resolve();
     }
 
     public function resolve(): string
