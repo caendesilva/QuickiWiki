@@ -19,8 +19,8 @@
         </nav>
 
         <!-- Footer -->
-        <footer class="flex items-center border-t p-2 min-h-[4rem] text-sm text-center justify-center">
-            {{ WikiSettings::footerText() }}
+        <footer class="flex items-center border-t p-2 min-h-[4rem] text-sm text-center justify-center prose">
+            {!! Str::inlineMarkdown(WikiSettings::footerText()) !!}
         </footer>
     </div>
 </div>
