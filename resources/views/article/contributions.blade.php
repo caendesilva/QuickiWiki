@@ -27,9 +27,15 @@
                             <tbody>
                                 @foreach ($contributions as $contribution)
                                     <tr>
-                                        <td class="border px-4 py-2"><a href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</a></td>
-                                        <td class="border px-4 py-2"><time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time></td>
-                                        <td class="border px-4 py-2">{{ $contribution->message }} <small>({{ $contribution->diff() }})</small></td>
+                                        <td class="border px-4 py-2">
+                                            <a href="{{ route('users.show', $contribution->user) }}">{{ $contribution->user->name }}</a>
+                                        </td>
+                                        <td class="border px-4 py-2">
+                                            <time datetime="{{ $contribution->created_at }}">{{ $contribution->created_at->format('H:i, d F Y') }}</time>
+                                        </td>
+                                        <td class="border px-4 py-2">
+                                            {{ $contribution->message }} <small>({{ $contribution->diff() }})</small>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
