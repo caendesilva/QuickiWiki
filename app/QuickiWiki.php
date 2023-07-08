@@ -7,5 +7,5 @@ namespace App;
  */
 class QuickiWiki
 {
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.2.0';
 }
