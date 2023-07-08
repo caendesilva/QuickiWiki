@@ -23,7 +23,7 @@ class WikiSettings {
     {
         return [
             NavItem::make('Home', 'home'),
-            NavItem::make('Profile', 'profile.edit')->visible(Auth::check()),
+            NavItem::make('Profile', 'profile.edit')->visible(fn () => Auth::check()),
         ];
     }
 
