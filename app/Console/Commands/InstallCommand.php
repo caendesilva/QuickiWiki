@@ -56,12 +56,16 @@ class InstallCommand extends Command
                     $adminPassword = $this->secret('Enter Admin user password');
                 } while (! $adminPassword);
             } else if (! $isInteractive) {
-                $adminPassword ??= 'password';
+                $adminPassword ??= config('auth.default_admin_password');
                 $this->comment('Admin user will be created with following credentials:');
                 $this->line("  Name: $adminName");
                 $this->line("  Email: $adminEmail");
-                $this->line("  Password: $adminPassword");
-                $this->warn('Please change password to something secure!');
+                if ($adminPassword === 'password') {
+                    $this->line("  Password: $adminPassword");
+                    $this->warn('Please change password to something secure!');
+                } else {
+                    $this->line('  Password: ********');
+                }
                 $this->newLine();
             }
 

@@ -112,4 +112,18 @@ return [
 
     'password_timeout' => 10800,
 
+   /*
+   |--------------------------------------------------------------------------
+   | Default Admin Password
+   |--------------------------------------------------------------------------
+   |
+   | Here you may define the default admin password for the application.
+   | Note that this is only used when the admin user is created during
+   | the installation process triggered by the `install` command if
+   | no password is provided in the interactive command prompt.
+   |
+   */
+
+    'default_admin_password' => env('DEFAULT_ADMIN_PASSWORD', 'password'),
+
 ];
