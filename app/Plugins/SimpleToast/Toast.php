@@ -44,6 +44,7 @@ class Toast implements Htmlable
     public function toHtml(): HtmlString
     {
         return new HtmlString(view('components.plugins.simple-toast.toast', [
+            'background' => static::TYPES[$this->type],
             'message' => $this->message,
             'type' => $this->type,
         ])->render());
