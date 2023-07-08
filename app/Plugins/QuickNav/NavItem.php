@@ -9,6 +9,7 @@ class NavItem
     public readonly string $label;
     public readonly string $destination;
     public int $priority = 0;
+    public bool|\Closure $visible = true;
 
     public static function make(string $label, string $destination, int $priority = 0): static
     {
@@ -36,5 +37,21 @@ class NavItem
     public function isActive(): bool
     {
         return request()->is($this->destination);
+    }
+
+    public function isVisible(): bool
+    {
+        if ($this->visible instanceof \Closure) {
+            return ($this->visible)();
+        }
+
+        return $this->visible;
+    }
+
+    public function visible(bool|\Closure $visible = true): static
+    {
+        $this->visible = $visible;
+
+        return $this;
     }
 }
