@@ -21,11 +21,6 @@ class Toast implements Htmlable
         'warning' => 'bg-yellow-500',
     ];
 
-    public static function listen(): ?HtmlString
-    {
-        return Session::has('toast') ? Session::pull('toast')->toHtml() : null;
-    }
-
     public static function flash(string $message, string $type = 'info'): void
     {
         Session::flash('toast', new Toast($message, $type));
