@@ -1,9 +1,17 @@
 #!/usr/bin/env php
 <?php
 
+// Check if --dev is passed
+$dev = in_array('--dev', $argv);
+if ($dev) {
+    // Remove it so it doesn't get passed to Artisan
+    unset($argv[array_search('--dev', $argv)]);
+}
+
 // Create .env if needed
 if (! file_exists(__DIR__.'/.env')) {
-    copy(__DIR__.'/.env.production.example', __DIR__.'/.env');
+    $example = $dev ? '.env.example' : '.env.production.example';
+    copy(__DIR__. '/' . $example . '', __DIR__.'/.env');
 }
 
 // Run Composer install if needed
