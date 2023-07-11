@@ -26,4 +26,10 @@ if (! file_exists(__DIR__.'/vendor/autoload.php')) {
 
 // Now we can run the Artisan install command
 passthru('php artisan app:install --ansi', $artisanResultCode);
+
+// If something failed, we write a message to the user
+if ($artisanResultCode !== 0) {
+    echo 'Installation failed. Please check the logs above for more information, then run the installer again.';
+}
+
 exit($artisanResultCode);
