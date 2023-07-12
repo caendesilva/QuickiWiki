@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ShortcodeProcessor;
+use Illuminate\Database\QueryException;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
@@ -26,7 +27,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $index = Article::where('slug', 'index')->first();
+        try {
+            $index = Article::where('slug', 'index')->first();
+        } catch (QueryException) {
+            $index = null;
+        }
 
         if (! $index) {
             if (! app('installed')) {
