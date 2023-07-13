@@ -3,10 +3,8 @@
 
 // Check if --dev is passed
 $dev = in_array('--dev', $argv);
-if ($dev) {
-    // Remove it so it doesn't get passed to Artisan
-    unset($argv[array_search('--dev', $argv)]);
-}
+// Check if --no-interaction is passed
+$noInteraction = in_array('--no-interaction', $argv) || in_array('-n', $argv);
 
 // Create .env if needed
 if (! file_exists(__DIR__.'/.env')) {
@@ -25,7 +23,7 @@ if (! file_exists(__DIR__.'/vendor/autoload.php')) {
 }
 
 // Now we can run the Artisan install command
-passthru('php artisan app:install --ansi', $artisanResultCode);
+passthru('php artisan app:install --ansi'.($noInteraction ? ' --no-interaction' : ''), $artisanResultCode);
 
 // If something failed, we write a message to the user
 if ($artisanResultCode !== 0) {
