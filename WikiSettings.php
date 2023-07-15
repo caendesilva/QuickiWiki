@@ -48,4 +48,12 @@ class WikiSettings {
     {
         return '[QuickiWiki](https://quickiwiki.desilva.se) &nbsp;v'. QuickiWiki::VERSION;
     }
+
+    /**
+     * The path to the application logo image. Relative to the public directory.
+     */
+    public static function logoPath(): string
+    {
+        return 'media/logo.svg';
+    }
 }
