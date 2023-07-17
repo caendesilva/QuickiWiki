@@ -4,7 +4,7 @@
         <!-- Logo -->
         <header class="flex items-center border-b p-2 min-h-[4rem]">
             <a href="{{ route('home') }}" class="flex items-center">
-                <x-application-logo class="block h-9 w-auto fill-current text-gray-800 px-2" />
+                <x-application-logo class="block h-9 w-auto opacity-75 px-2" />
                 <strong class="text-lg">{{ config('app.name', 'Laravel') }}</strong>
             </a>
         </header>
