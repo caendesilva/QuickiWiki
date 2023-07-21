@@ -1,1 +1,1 @@
-<img src="{{ WikiSettings::logoPath() }}" alt="{{ WikiSettings::$wikiName }}" {{ $attributes }}>
+<img src="{{ asset(WikiSettings::logoPath()) }}" alt="{{ WikiSettings::$wikiName }}" {{ $attributes }}>
