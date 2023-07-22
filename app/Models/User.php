@@ -57,6 +57,14 @@ class User extends Authenticatable
      */
     public function role(): Roles
     {
-        return Roles::tryFrom($this->role) ?? Roles::User;
+        return Roles::tryFrom($this->attributes['role']) ?? Roles::User;
+    }
+
+    /**
+     * Get the user's role as an attribute.
+     */
+    public function getRoleAttribute(): Roles
+    {
+        return $this->role();
     }
 }
