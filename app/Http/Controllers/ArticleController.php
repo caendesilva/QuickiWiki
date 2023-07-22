@@ -149,7 +149,7 @@ class ArticleController extends Controller
      */
     public function random()
     {
-        $article = Article::where('slug', '!=', 'index')->inRandomOrder()->firstOrFail();
+        $article = Article::inRandomOrder()->firstOrFail();
 
         return redirect()->route('articles.show', $article);
     }
