@@ -72,6 +72,12 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        if (request()->route()->uri === 'articles') {
+            return view('article.index', [
+                'articles' => Article::where('slug', '!=', 'index')->get(),
+            ]);
+        }
+
         return view('article.show', [
             'title' => (new ShortcodeProcessor($article->title))->process(),
             'content' => new HtmlString(Str::markdown((new ShortcodeProcessor($article->content))->process())),
