@@ -33,4 +33,24 @@ enum Roles: string
      * Admins can demote users to this role to prevent them from editing articles.
      */
     case Guest = 'guest';
+
+    public static function all(): array
+    {
+        return [
+            self::Admin,
+            self::Editor,
+            self::User,
+            self::Guest,
+        ];
+    }
+
+    public function getPermissionLevel(): int
+    {
+        return match ($this) {
+            self::Admin => 3,
+            self::Editor => 2,
+            self::User => 1,
+            self::Guest => 0,
+        };
+    }
 }
