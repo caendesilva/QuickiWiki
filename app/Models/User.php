@@ -73,6 +73,6 @@ class User extends Authenticatable
      */
     public function hasRole(Roles $role): bool
     {
-        return $this->role()->getPermissionLevel() >= $role->getPermissionLevel();
+        return $this->role()->permissionLevel() >= $role->permissionLevel();
     }
 }

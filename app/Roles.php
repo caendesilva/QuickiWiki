@@ -44,7 +44,7 @@ enum Roles: string
         ];
     }
 
-    public function getPermissionLevel(): int
+    public function permissionLevel(): int
     {
         return match ($this) {
             self::Admin => 3,
