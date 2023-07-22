@@ -18,11 +18,17 @@
                     <form method="POST" action="{{ route('articles.update', $article) }}">
                         @method('PUT')
                         @csrf
-                        <x-input-label for="title">Title</x-input-label>
-                        <x-text-input type="text" name="title" id="title" class="form-input mt-1 mb-3 block w-full" value="{{ $article->title }}" />
+                        <div class="mb-3">
+                            <x-input-label for="title">Title</x-input-label>
+                            <x-text-input type="text" name="title" id="title" class="form-input mt-1 block w-full" value="{{ $article->title }}" required />
+                            <x-input-error :messages="$errors->get('title')" class="my-2" />
+                        </div>
 
-                        <x-input-label for="content">Content</x-input-label>
-                        <x-textarea-input name="content" id="content" class="form-textarea mt-1 mb-3 block w-full" rows="10">{{ $article->content }}</x-textarea-input>
+                        <div class="mb-3">
+                            <x-input-label for="content">Content</x-input-label>
+                            <x-textarea-input name="content" id="content" class="form-textarea mt-1 block w-full" rows="10" required>{{ $article->content }}</x-textarea-input>
+                            <x-input-error :messages="$errors->get('content')" class="my-2" />
+                        </div>
 
                         <div class="mt-4">
                             <x-secondary-button href="{{ route('articles.show', $article) }}" class="mr-1">

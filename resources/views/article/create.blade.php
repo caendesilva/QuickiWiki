@@ -17,11 +17,18 @@
                     <hr class="my-3">
                     <form method="POST" action="{{ route('articles.store') }}">
                         @csrf
-                        <x-input-label for="title">Title</x-input-label>
-                        <x-text-input type="text" name="title" id="title" class="form-input mt-1 mb-3 block w-full" value="{{ old('title') }}" />
+                        <div class="mb-3">
+                            <x-input-label for="title">Title</x-input-label>
+                            <x-text-input type="text" name="title" id="title" class="form-input mt-1 block w-full" value="{{ old('title') }}" required />
+                            <x-input-error :messages="$errors->get('title')" class="my-2" />
+                            <x-input-error :messages="$errors->get('slug')" class="my-2" />
+                        </div>
 
-                        <x-input-label for="content">Content</x-input-label>
-                        <x-textarea-input name="content" id="content" class="form-textarea mt-1 mb-3 block w-full" rows="10">{{ old('content') }}</x-textarea-input>
+                        <div class="mb-3">
+                            <x-input-label for="content">Content</x-input-label>
+                            <x-textarea-input name="content" id="content" class="form-textarea mt-1 block w-full" rows="10" required>{{ old('content') }}</x-textarea-input>
+                            <x-input-error :messages="$errors->get('content')" class="my-2" />
+                        </div>
 
                         <div class="mt-4">
                             <x-secondary-button href="{{ route('home')  }}" class="mr-1">
