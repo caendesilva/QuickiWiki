@@ -18,19 +18,19 @@ enum Roles: string
     /**
      * The editor role, for trusted users.
      *
-     * Articles can be restricted to only be edited by editors or above.
+     * Articles can be restricted by editors to only allow editing by editors or above.
      */
     case Editor = 'editor';
 
     /**
-     * The default user role. Can create and edit articles.
+     * The default user role. Can create and edit all articles except those restricted to editors.
      */
     case User = 'user';
 
     /**
      * The guest role which only has read permissions.
      *
-     * Admins can demote users to this role to prevent them from editing articles.
+     * Admins can demote users to this role to prevent them from editing any articles or creating new ones.
      */
     case Guest = 'guest';
 
