@@ -143,4 +143,14 @@ class ArticleController extends Controller
             'contributions' => $article->contributions()->with('user')->latest()->paginate(10),
         ]);
     }
+
+    /**
+     * Redirect to a random article.
+     */
+    public function random()
+    {
+        $article = Article::where('slug', '!=', 'index')->inRandomOrder()->firstOrFail();
+
+        return redirect()->route('articles.show', $article);
+    }
 }
