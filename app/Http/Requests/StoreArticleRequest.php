@@ -23,7 +23,9 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'slug' => 'required|string|max:255|unique:articles,slug|not_in:index,create,edit,delete',
         ];
     }
 }
