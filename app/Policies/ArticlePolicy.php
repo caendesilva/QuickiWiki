@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Roles;
 use Illuminate\Auth\Access\Response;
 
 class ArticlePolicy
@@ -29,7 +30,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasRole(Roles::User);
     }
 
     /**
@@ -37,7 +38,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
-        return true;
+        return $user->hasRole(Roles::User);
     }
 
     /**
@@ -45,7 +46,7 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article): bool
     {
-        return $article->slug !== 'index';
+        return $article->slug !== 'index' && $user->hasRole(Roles::User);
     }
 
     /**
