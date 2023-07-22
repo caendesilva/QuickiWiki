@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Roles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,5 +50,13 @@ class User extends Authenticatable
     public function contributions(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Contribution::class);
+    }
+
+    /**
+     * Get the user's role.
+     */
+    public function role(): Roles
+    {
+        return Roles::from($this->role);
     }
 }
