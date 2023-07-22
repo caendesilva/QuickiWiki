@@ -20,10 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/users/{user}', [ProfileController::class, 'show'])->name('users.show');
 });
 
 Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('home');
 Route::resource('articles', \App\Http\Controllers\ArticleController::class);
 Route::get('/articles/{article}/contributions', [\App\Http\Controllers\ArticleController::class, 'contributions'])->name('articles.contributions');
-
-Route::resource('users', \App\Http\Controllers\UserController::class)->only('show');
