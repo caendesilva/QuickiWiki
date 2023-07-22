@@ -67,4 +67,12 @@ class User extends Authenticatable
     {
         return $this->role();
     }
+
+    /**
+     * Determine whether the user has a role.
+     */
+    public function hasRole(Roles $role): bool
+    {
+        return $this->role()->getPermissionLevel() >= $role->getPermissionLevel();
+    }
 }
