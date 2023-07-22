@@ -37,7 +37,7 @@ class WikiSettings {
     {
         return [
             NavItem::make('Home', 'home'),
-            NavItem::make('Profile', 'profile.edit')->auth(),
+            NavItem::make('Profile', 'profile.edit')->auth()->attributes(['class' => 'mt-auto']),
         ];
     }
 
