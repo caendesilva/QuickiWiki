@@ -38,6 +38,7 @@ class WikiSettings {
         return [
             NavItem::make('Home', 'home'),
             NavItem::make('Profile', 'profile.edit')->auth(),
+            NavItem::make('Create article', 'articles.create'),
         ];
     }
 
