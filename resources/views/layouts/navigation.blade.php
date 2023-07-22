@@ -12,7 +12,7 @@
             </button>
         </div>
 
-        <!-- Settings Dropdown -->
+        <!-- Navigation Links -->
         <div class="flex items-center ml-6">
             <div class="hidden sm:block px-2">
                 @foreach(\App\QuickiWiki::navigationMenu() as $navItem)
