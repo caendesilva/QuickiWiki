@@ -10,7 +10,7 @@
         </header>
 
         <!-- Navigation Links -->
-        <nav class="h-full py-2">
+        <nav class="h-full py-2 flex flex-col">
             @foreach(\App\QuickiWiki::sidebarMenu() as $navItem)
                 <x-responsive-nav-link :href="$navItem->resolve()" :active="$navItem->isActive()" :extraAttributes="$navItem->getAttributes()">
                     {{ __($navItem->label()) }}
