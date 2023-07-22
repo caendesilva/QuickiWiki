@@ -37,6 +37,7 @@ class WikiSettings {
     {
         return [
             NavItem::make('Home', 'home'),
+            NavItem::divider(),
             NavItem::make('All Articles', 'articles.index'),
             NavItem::make('Create article', 'articles.create'),
             NavItem::make('Random article', 'articles.random'),
