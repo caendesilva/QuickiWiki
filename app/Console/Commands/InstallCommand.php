@@ -99,7 +99,7 @@ class InstallCommand extends Command
             }
 
             $this->info('Creating admin user...');
-            User::create([
+            User::forceCreate([
                 'name' => $adminName,
                 'email' => $adminEmail,
                 'password' => $adminPassword,
