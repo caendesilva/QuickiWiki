@@ -40,6 +40,7 @@ class WikiSettings {
             NavItem::make('All Articles', 'articles.index'),
             NavItem::make('Create article', 'articles.create'),
             NavItem::make('Random article', 'articles.random'),
+            NavItem::divider(),
             NavItem::make('Profile', 'profile.edit')->auth(),
         ];
     }

@@ -25,6 +25,11 @@ class NavItem implements \Stringable
         $this->priority = $priority;
     }
 
+    public static function divider(): static
+    {
+        return new static('[[ Divider ]]', '', 0);
+    }
+
     public function __toString(): string
     {
         return $this->resolve();

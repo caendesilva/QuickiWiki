@@ -12,6 +12,10 @@
         <!-- Navigation Links -->
         <nav class="h-full py-2 flex flex-col">
             @foreach(\App\QuickiWiki::sidebarMenu() as $navItem)
+                @if($navItem->label() === '[[ Divider ]]')
+                    <hr class="border-gray-200 my-2">
+                    @continue
+                @endif
                 <x-responsive-nav-link :href="$navItem->resolve()" :active="$navItem->isActive()" :extraAttributes="$navItem->getAttributes()">
                     {{ __($navItem->label()) }}
                 </x-responsive-nav-link>
