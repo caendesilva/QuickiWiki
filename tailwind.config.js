@@ -22,4 +22,13 @@ export default {
         typography,
         forms,
     ],
+
+    purge: {
+        options: {
+            safelist: [
+                'mt-auto',
+                'mb-auto',
+            ],
+        }
+    }
 };
