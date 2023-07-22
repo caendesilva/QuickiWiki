@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Roles;
 use Database\Seeders\ProductionSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -103,7 +104,7 @@ class InstallCommand extends Command
                 'email' => $adminEmail,
                 'password' => $adminPassword,
                 'email_verified_at' => now(),
-                // TODO: Add role
+                'role' => Roles::Admin->value,
             ]);
 
             $this->info('Creating default pages...');
