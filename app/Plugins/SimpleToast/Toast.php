@@ -15,10 +15,10 @@ class Toast implements Htmlable
     public string $type;
 
     public const TYPES = [
-        'success' => 'bg-green-500',
-        'error' => 'bg-red-500',
-        'info' => 'bg-blue-500',
-        'warning' => 'bg-yellow-500',
+        'success',
+        'error',
+        'info',
+        'warning',
     ];
 
     public static function flash(string $message, string $type = 'info'): void
@@ -28,7 +28,7 @@ class Toast implements Htmlable
 
     public function __construct(string $message, string $type = 'info')
     {
-        if (! array_key_exists($type, static::TYPES)) {
+        if (! in_array($type, static::TYPES)) {
             throw new \InvalidArgumentException("Invalid toast type: {$type}");
         }
 
@@ -39,7 +39,6 @@ class Toast implements Htmlable
     public function toHtml(): HtmlString
     {
         return new HtmlString(view('components.plugins.simple-toast.toast', [
-            'background' => static::TYPES[$this->type],
             'message' => $this->message,
             'type' => $this->type,
         ])->render());
