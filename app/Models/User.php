@@ -57,6 +57,6 @@ class User extends Authenticatable
      */
     public function role(): Roles
     {
-        return Roles::from($this->role);
+        return Roles::tryFrom($this->role) ?? Roles::User;
     }
 }
