@@ -11,6 +11,8 @@ class NavItem implements \Stringable
     protected int $priority = 0;
     protected bool|\Closure $visible = true;
 
+    protected array|\Closure $attributes = [];
+
     public static function make(string $label, string $destination, int $priority = 0): static
     {
         return new static($label, $destination, $priority);
@@ -68,9 +70,25 @@ class NavItem implements \Stringable
         return $this->visible;
     }
 
+    public function getAttributes(): array
+    {
+        if ($this->attributes instanceof \Closure) {
+            return ($this->attributes)();
+        }
+
+        return $this->attributes;
+    }
+
     public function visible(bool|\Closure $visible = true): static
     {
         $this->visible = $visible;
+
+        return $this;
+    }
+
+    public function attributes(array|\Closure $attributes): static
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }

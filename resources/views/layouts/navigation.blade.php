@@ -16,7 +16,7 @@
         <div class="flex items-center ml-6">
             <div class="hidden sm:block px-2">
                 @foreach(\App\QuickiWiki::navigationMenu() as $navItem)
-                    <x-nav-link :href="$navItem" :active="$navItem->isActive()">
+                    <x-nav-link :href="$navItem" :active="$navItem->isActive()" :extraAttributes="$navItem->getAttributes()">
                         {{ __($navItem->label()) }}
                     </x-nav-link>
                 @endforeach
