@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Article;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreArticleRequest extends FormRequest
 {
@@ -13,6 +14,16 @@ class StoreArticleRequest extends FormRequest
     public function authorize(): bool
     {
         return $this->user()->can('create', Article::class);
+    }
+
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'slug' => $this->slug ?? Str::slug($this->title),
+        ]);
     }
 
     /**
