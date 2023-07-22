@@ -48,4 +48,12 @@ class Article extends Model
     {
         return $this->hasMany(Contribution::class);
     }
+
+    /**
+     * Is the article restricted to users with the editor role?
+     */
+    public function isRestricted(): bool
+    {
+        return $this->getMetadata()['restricted'] ?? false;
+    }
 }

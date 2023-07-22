@@ -9,9 +9,15 @@
                         </h2>
                         
                         <div class="text-sm text-gray-500 flex items-start">
-                            <a href="{{ route('articles.edit', $article) }}">
-                                {{ __('Edit') }}
-                            </a>
+                            @if($article->isRestricted())
+                                <span title="This article is restricted to editors only">
+                                    {{ __('Edit') }} 🔒
+                                </span>
+                            @else
+                                <a href="{{ route('articles.edit', $article) }}">
+                                    {{ __('Edit') }}
+                                </a>
+                            @endif
 
                             <x-dropdown>
                                 <x-slot:trigger>
@@ -36,6 +42,20 @@
                                        @method('DELETE')
                                        @csrf
                                    </form>
+
+                                   @can('restrict', $article)
+                                       <x-dropdown-link href="{{ route('articles.restrict', $article) }}" onclick="event.preventDefault(); document.getElementById('restrict-article-form').submit();">
+                                           {{ $article->isRestricted() ? __('Unrestrict') : __('Restrict') }}
+                                       </x-dropdown-link>
+
+                                       <form id="restrict-article-form" action="{{ route('articles.restrict', $article) }}" method="POST" class="hidden">
+                                           @csrf
+                                           @if($article->isRestricted())
+                                               @method('DELETE')
+
+                                           @endif
+                                       </form>
+                                   @endcan
                                </x-slot:content>
                             </x-dropdown>
                         </div>

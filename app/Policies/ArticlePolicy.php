@@ -38,6 +38,10 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
+        if ($article->isRestricted()) {
+            return $user->hasRole(Roles::Editor);
+        }
+
         return $user->hasRole(Roles::User);
     }
 
@@ -46,7 +50,7 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article): bool
     {
-        return $article->slug !== 'index' && $user->hasRole(Roles::User);
+        return $article->slug !== 'index' && $this->update($user, $article);
     }
 
     /**
@@ -63,5 +67,13 @@ class ArticlePolicy
     public function forceDelete(User $user, Article $article): bool
     {
         //
+    }
+
+    /**
+     * Determine whether the user can restrict the model.
+     */
+    public function restrict(User $user, Article $article): bool
+    {
+        return $user->hasRole(Roles::Editor);
     }
 }

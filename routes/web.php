@@ -26,4 +26,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])->name('home');
 Route::get('/articles/random', [\App\Http\Controllers\ArticleController::class, 'random'])->name('articles.random');
 Route::get('/articles/{article}/contributions', [\App\Http\Controllers\ArticleController::class, 'contributions'])->name('articles.contributions');
+Route::match(['post', 'delete'], '/articles/{article}/restrict', [\App\Http\Controllers\ArticleController::class, 'restrict'])->name('articles.restrict');
 Route::resource('articles', \App\Http\Controllers\ArticleController::class);

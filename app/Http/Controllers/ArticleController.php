@@ -135,6 +135,28 @@ class ArticleController extends Controller
     }
 
     /**
+     * Restrict the specified resource from editing.
+     */
+    public function restrict(Article $article)
+    {
+        $this->authorize('restrict', $article);
+
+        $restrict = request()->method() !== 'DELETE';
+
+        $article->update([
+            'metadata' => array_merge($article->metadata ?? [], [
+                'restricted' => $restrict,
+            ]),
+        ]);
+
+        $message = $restrict ? 'Restricted the article.' : 'Unlocked the article.';
+        Contribution::log($article, request()->user(), $article->content, $message);
+        Toast::flash($message, 'success');
+
+        return redirect()->route('articles.show', $article);
+    }
+
+    /**
      * Display the contribution history of the specified resource.
      */
     public function contributions(Article $article)
