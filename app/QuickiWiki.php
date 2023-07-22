@@ -10,7 +10,7 @@ use WikiSettings;
  */
 class QuickiWiki
 {
-    public const VERSION = '0.3.0-dev';
+    public const VERSION = '0.4.0-dev';
 
     /** @return array<\App\Plugins\QuickNav\NavItem> */
     public static function navigationMenu(): array
