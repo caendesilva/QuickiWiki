@@ -120,6 +120,10 @@ class ArticleController extends Controller
         $this->authorize('delete', $article);
 
         $article->delete();
+
+        Toast::flash('Article deleted!', 'success');
+
+        return redirect()->route('articles.index');
     }
 
     /**
