@@ -5,7 +5,7 @@
                 <section class="p-6 text-gray-900">
                     <header class="flex justify-between">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Creating a new article') }}
+                            {{ __('Create new article') }}
                         </h2>
 
                         <div class="text-sm text-gray-500">
