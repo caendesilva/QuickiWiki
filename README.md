@@ -2,6 +2,10 @@
 
 Quick, self-hosted, Laravel Wiki platform, designed to be simple and fast.
 
+## Not currently maintained
+
+This package is not currently maintained, as I'm focusing my efforts elsewhere. For this reason, the project is archived. If you have any kind of interest in this project, please reach out to me on Twitter or email. My details can be found on my GitHub profile.
+
 ## Alpha Software Warning
 
 This is alpha software and is not ready for production use, as features are not complete,
